@@ -38,8 +38,16 @@ while True:
             print("Invalid option for social media choice.")
         
         # Save the password to a file
-        with open("passwords.txt", "a") as file:
-            file.write(f"{social_media}: {password}\n")
+        try:
+            with open("passwords.txt", "a") as file:
+                file.write(f"{social_media}: {password}\n")
+            
+            # Read and print the contents of the file
+            with open("passwords.txt", "r") as file:
+                print("\nSaved Passwords:")
+                print(file.read())
+        except Exception:
+            print(f"An error occurred: {e}")
     
     elif choice == "2":
         break
